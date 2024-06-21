@@ -10,7 +10,6 @@ spec:
   destination:
     namespace: demo-app-with-imgUpdater-git
     server: https://kubernetes.default.svc
-  project: test-image-updater
   source:
     kustomize:
       images:
