@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd-image-updater.argoproj.io/alias1.update-strategy: digest
+    argocd-image-updater.argoproj.io/image-list: alias1=anitha1336/gitops-demo:0.3
+  name: demo-app-with-imgUpdater-git
+  namespace: argocd
+spec:
+  destination:
+    namespace: demo-app-with-imgUpdater-git
+    server: https://kubernetes.default.svc
+  project: test-image-updater
+  source:
+    kustomize:
+      images:
+      - anitha1336/gitops-demo
+    path: demo-app/
+    repoURL: https://github.com/anithapriyanatarajan/demogitops-k8-manifests.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
