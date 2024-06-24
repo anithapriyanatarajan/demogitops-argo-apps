@@ -4,6 +4,7 @@ metadata:
   annotations:
     argocd-image-updater.argoproj.io/alias1.update-strategy: digest
     argocd-image-updater.argoproj.io/image-list: alias1=anitha1336/gitops-demo:0.3
+    argocd-image-updater.argoproj.io/write-back-method: git
   name: demo-app-with-imgupdater-git
   namespace: argocd
 spec:
